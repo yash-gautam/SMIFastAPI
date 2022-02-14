@@ -219,6 +219,7 @@ app.add_middleware(
 graphdb = GraphDatabase.driver(uri="neo4j+s://f951f243.databases.neo4j.io", auth=("neo4j", "08_xJvvomlHaYsaUnUfXiM8hFQmvRijMzPDed63f_y0"), max_connection_lifetime=1)
 session = graphdb.session()
 
+
 com1 = [
     {
         "Dim": "Shop Floor Automation",
@@ -513,8 +514,7 @@ async def insert():
  #    data = result.data()
  #    json_data = jsonable_encoder(data)
 
-
-    k = MPI.adjusted_headCount()
+    k = await MPI.adjusted_headCount()
     m = k[0]
     return m
 
@@ -530,7 +530,7 @@ async def Uncensored():
  #    json_data = jsonable_encoder(data)
 
 
-    k = MPI.UnCensored_HeadCountRatio()
+    k = await MPI.UnCensored_HeadCountRatio()
     return k
 
 
@@ -543,7 +543,7 @@ async def censored():
  #    result = session.run(q2,x)
  #    data = result.data()
  #    json_data = jsonable_encoder(data)
-    k = MPI.Censored_HeadCountRatio()
+    k = await MPI.Censored_HeadCountRatio()
     return k
 
 @app.post('/addParentNode',tags=["Organisation"])
